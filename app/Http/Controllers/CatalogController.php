@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Place;
-use Illuminate\Http\Request;
+use App\Models\Catalog;
+use App\Http\Requests\StoreCatalogRequest;
+use App\Http\Requests\UpdateCatalogRequest;
 
-class PlacesController extends Controller
+class CatalogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,10 +31,10 @@ class PlacesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreCatalogRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCatalogRequest $request)
     {
         //
     }
@@ -41,10 +42,10 @@ class PlacesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
+    public function show(Catalog $catalog)
     {
         //
     }
@@ -52,10 +53,10 @@ class PlacesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Place $place)
+    public function edit(Catalog $catalog)
     {
         //
     }
@@ -63,11 +64,11 @@ class PlacesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Place  $place
+     * @param  \App\Http\Requests\UpdateCatalogRequest  $request
+     * @param  \App\Models\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Place $place)
+    public function update(UpdateCatalogRequest $request, Catalog $catalog)
     {
         //
     }
@@ -75,10 +76,10 @@ class PlacesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Place $place)
+    public function destroy(Catalog $catalog)
     {
         //
     }
