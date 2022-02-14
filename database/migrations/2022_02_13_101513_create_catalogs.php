@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('catalogs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('gender');
-            //$table->enum('gender', ['male', 'female']);
-            $table->string('phone_number');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('catalog_slug', 100)->unique();
+            $table->string('catalog_name', 100);
             $table->boolean('active_flag')->default(TRUE);
             $table->string('created_user', 100)->nullable();
             $table->string('updated_user', 100)->nullable();
@@ -38,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('catalogs');
     }
 };
