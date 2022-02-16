@@ -13,7 +13,8 @@
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- CSS -->
+	<link rel="stylesheet" href="{{ mix('assets/css/main.css') }}">
 </head>
 
 <body>
@@ -23,27 +24,25 @@
 	</div>
 	<!-- [ Pre-loader ] End -->
 
-	<!-- Header -->
+	<!-- [ Header ] start -->
 	@include('header')
+	<!-- [ Header ] end -->
 
 	<!-- [ Main Content ] start -->
-	<div class="pc-container">
-
+	<div id="content">
+		<example-component></example-component>
 		@include('content')
-
 	</div>
 	<!-- [ Main Content ] end -->
 
 	<!-- [ Footer ] start -->
-	<div class="pc-container">
-		<div class="pcoded-content">
-			@include('footer')
-		</div>
-	</div>
+	@include('footer')
 	<!-- [ Footer ] end -->
 
-	<script src="assets/js/main.js"></script>
-
+	<!-- Javascript -->
+	<script src="{{ mix('assets/js/manifest.js') }}"></script>
+	<script src="{{ mix('assets/js/vendor.js') }}"></script>
+	<script src="{{ mix('assets/js/main.js') }}"></script>
 </body>
 
 </html>
