@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('item_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('id_user');
+            $table->bigInteger('id_catalog');
+            $table->bigInteger('id_item');
             $table->string('item_category_slug', 100);
             $table->string('item_category_name', 100);
             $table->boolean('active_flag')->default(TRUE);
