@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_user');
             $table->bigInteger('id_catalog');
+            //$table->bigInteger('id_item_category');
             $table->string('item_slug', 100)->unique();
             $table->string('item_name', 100);
             $table->text('item_description');
