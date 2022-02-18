@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_user');
-            $table->string('post_slug', 100);
-            $table->string('title', 100);
-            $table->text('content')->nullable();
-            $table->boolean('publish_flag')->default(FALSE);
-            $table->dateTime('published_at')->nullable();
+            $table->bigInteger('id_user_role');
+            $table->string('role_name', 100);
+            $table->string('role_slug', 100)->unique();
+            $table->string('role_description', 100)->nullable();
             $table->boolean('active_flag')->default(TRUE);
             $table->string('created_user', 100)->nullable()->default('system');
             $table->string('updated_user', 100)->nullable()->default('system');
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('roles');
     }
 };

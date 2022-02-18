@@ -30,8 +30,13 @@
 
 	<!-- [ Main Content ] start -->
 	<div id="content">
+
 		<example-component></example-component>
+
+		<br>
+
 		@include('content')
+
 	</div>
 	<!-- [ Main Content ] end -->
 

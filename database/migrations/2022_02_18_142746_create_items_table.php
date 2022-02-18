@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_user');
-            $table->string('post_slug', 100);
-            $table->string('title', 100);
-            $table->text('content')->nullable();
+            $table->bigInteger('id_catalog');
+            $table->string('item_slug', 100)->unique();
+            $table->string('item_name', 100);
+            $table->text('item_description');
             $table->boolean('publish_flag')->default(FALSE);
             $table->dateTime('published_at')->nullable();
             $table->boolean('active_flag')->default(TRUE);
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('items');
     }
 };

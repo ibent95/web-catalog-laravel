@@ -25,4 +25,5 @@ mix
 .vue({ version: 3 })
 .extract()
 .sourceMaps()
+//.browserSync('catalog-laravel.loc')
 ;

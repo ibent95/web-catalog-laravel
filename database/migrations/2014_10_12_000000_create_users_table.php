@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('active_flag')->default(TRUE);
-            $table->string('created_user', 100)->nullable();
-            $table->string('updated_user', 100)->nullable();
+            $table->string('created_user', 100)->nullable()->default('system');
+            $table->string('updated_user', 100)->nullable()->default('system');
             $table->timestamps();
             $table->uuid()->unique();
         });

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('place_category_slug', 100);
             $table->string('place_category_name', 100);
             $table->boolean('active_flag')->default(TRUE);
-            $table->string('created_user', 100)->nullable();
-            $table->string('updated_user', 100)->nullable();
+            $table->string('created_user', 100)->nullable()->default('system');
+            $table->string('updated_user', 100)->nullable()->default('system');
             $table->timestamps();
             $table->uuid()->unique();
         });
