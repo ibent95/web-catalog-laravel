@@ -1,11 +1,5 @@
 <div class="container">
 
-	<div class="slider">
-		<div class="">
-			<div>Hello</div>
-		</div>
-	</div>
-
 	<div class="card text-center">
 		<div class="card-header">
 			Home
