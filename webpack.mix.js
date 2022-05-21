@@ -26,4 +26,5 @@ mix
 .extract()
 .sourceMaps()
 //.browserSync('catalog-laravel.loc')
+.disableNotifications()
 ;
