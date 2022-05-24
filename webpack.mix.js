@@ -25,6 +25,6 @@ mix
 .vue({ version: 3 })
 .extract()
 .sourceMaps()
-//.browserSync('catalog-laravel.loc')
+.browserSync('catalog-laravel.loc')
 .disableNotifications()
 ;

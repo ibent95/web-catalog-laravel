@@ -19,9 +19,7 @@
 
 <body>
 	<!-- [ Pre-loader ] start -->
-	<div class="loader-bg">
-		<div class="loader-fill"></div>
-	</div>
+	@include('contents/loader-content')
 	<!-- [ Pre-loader ] End -->
 
 	<!-- [ Header ] start -->
@@ -30,10 +28,6 @@
 
 	<!-- [ Main Content ] start -->
 	<div id="content">
-
-		<example-component></example-component>
-
-		<br>
 
 		@include('content')
 
