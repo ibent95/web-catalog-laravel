@@ -1,0 +1,15 @@
+version: "3.7"
+
+services: 
+  catalog_laravel:   
+    image: catalog-laravel:dev
+    container_name: catalog_laravel
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: 'php artisan serve --host=0.0.0.0'
+    volumes:
+      - /app/vendor/
+      - .:/app
+    ports:
+      - 8000:8000
