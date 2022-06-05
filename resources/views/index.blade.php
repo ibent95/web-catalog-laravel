@@ -15,11 +15,12 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="{{ mix('assets/css/main.css') }}">
+
 </head>
 
 <body>
 	<!-- [ Pre-loader ] start -->
-	@include('contents/loader-content')
+	@include('contents.loader-content')
 	<!-- [ Pre-loader ] End -->
 
 	<!-- [ Header ] start -->

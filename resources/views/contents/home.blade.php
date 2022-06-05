@@ -1,8 +1,8 @@
 <example-component></example-component>
 
-<!--<br>-->
+@include('contents.carousel-content')
 
-<div class="container mb-3">
+<!--<div class="container mb-3">
 
 	<div class="mb-3">
 		<span class="box-decoration-clone bg-gradient-to-r from-indigo-600 to-pink-500 text-white px-2 ...">
@@ -25,4 +25,4 @@
 		</div>
 	</div>
 
-</div>
+</div>-->

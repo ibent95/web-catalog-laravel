@@ -18,6 +18,7 @@ mix
 //.postCss('resources/css/app.css', 'public/assets/css/main.css', [
 //	require('tailwindcss'),
 //])
+
 .sass('resources/sass/app.scss', 'public/assets/css/main.css', {}, [
 	require('tailwindcss'),
 ])
@@ -25,6 +26,6 @@ mix
 .vue({ version: 3 })
 .extract()
 .sourceMaps()
-.browserSync('catalog-laravel.loc')
-.disableNotifications()
+.browserSync('catalog-laravel.loc') // Automatic loader in browser
+.disableNotifications() // Disable notifications
 ;

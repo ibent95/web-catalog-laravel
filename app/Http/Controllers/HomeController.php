@@ -13,10 +13,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $result = null;
+
         $response = [
             'content' => 'home',
+            'data' => $result,
+
         ];
         return view('index', $response);
+    }
+
+
+    function getProduct() {
+        return ['makanan', 'minuman'];
     }
 
     /**
