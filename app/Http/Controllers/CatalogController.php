@@ -15,7 +15,13 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        //
+        $result = Catalog::all();
+
+        return response()->json([
+            'data' => $result
+        ], 200);
+        
+        // return to your view
     }
 
     /**

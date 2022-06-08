@@ -14,6 +14,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return 'ok';
+
         $result = null;
 
         $response = [
