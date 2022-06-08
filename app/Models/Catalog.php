@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Catalog extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $guarded = ['uuid'];
+    
 }
