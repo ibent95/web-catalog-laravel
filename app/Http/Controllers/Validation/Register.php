@@ -11,8 +11,8 @@ class Register
     {
         $validation = Validator::make($request->all() ,[
             'profile_name' => 'required',
-            'username' => 'required',
-            'email'     =>  'required',
+            'username' => 'required|unique:users',
+            'email'     =>  'required|unique:users',
             'password' => 'required',
             'confirm_password' => 'required',
         ]);
@@ -24,9 +24,8 @@ class Register
                     return $value;                           
                 }                       
             },$errors);
-            
-            [$keys, $values] = Arr::divide($data);
-            return response()->json(['message' => $values], 400);
+            [$keys, $values] = Arr::divide($data);      
+            return $values;
         } 
         
         if($request->input('password') != $request->input('confirm_password')) {
