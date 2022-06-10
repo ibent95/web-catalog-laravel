@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Validation\Register;
 use App\Http\Traits\Response;
-use App\Models\User;
 use App\Repositories\Users;
 use App\Repositories\Catalogs;
+use App\Models\User;
+use Exception;
 
-class UserController extends Controller
+class RegisterController extends Controller
 {
     use Response;
     /**
@@ -48,15 +51,18 @@ class UserController extends Controller
         $err = Register::validate($request);
         if($err) return $this->badRequest($err);
         
-        $user = Users::store($request);
-        $catalog = Catalogs::store($request, $user->id);
-        
-
-        
-        
+        DB::beginTransaction();
+            try {
+                $userID = Users::store($request);
+                $catalogID = Catalogs::store($request, $userID);
+            } catch (Exception $e) {
+                DB::rollback();
+                Log::error($e->getMessage() . ' at ' . __FILE__ . ':' . __LINE__);
+                return $this->internalServerError();
+            }
+        DB::commit();
         
         return response()->json(['message' => 'sukses'], 200);
-        
     }
 
     /**

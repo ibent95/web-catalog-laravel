@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Handler\HandlerAuthentication;
+use App\Http\Controllers\Handler\HandlerCatalog;
+use App\Http\Controllers\Handler\HandlerHome;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +18,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/login', [UserController::class, 'login'])->name('login');
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-Route::get('/user/profile', [UserController::class, 'index'])->name('user_profile');
+
+Route::get('/token', function () {
+    return csrf_token();
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register your handler
+| to consume endpoint from backend
+|
+*/
+Route::get('/', [HandlerHome::class, 'index']);
+Route::get('/signin', [HandlerAuthentication::class, 'signIn']);
+Route::post('/login', [HandlerAuthentication::class, 'login']);
+Route::get('/signup', [HandlerAuthentication::class, 'signUp']);
+Route::post('/register', [HandlerAuthentication::class, 'register']);
+Route::get('/catalog', [HandlerCatalog::class, 'index']);
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Web API
+|--------------------------------------------------------------------------
+|
+| Here is where you can register your endpoint
+|
+*/
+Route::group(['prefix' => 'api'], function()
+// Route::group(['prefix' => 'api',  'middleware' => 'auth'], function()
+{
+    Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
+});
