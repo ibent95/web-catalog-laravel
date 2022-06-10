@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\Handler\HandlerRegister;
+use App\Http\Controllers\Handler\HandlerAuthentication;
 use App\Http\Controllers\Handler\HandlerCatalog;
+use App\Http\Controllers\Handler\HandlerHome;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +29,15 @@ Route::get('/token', function () {
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register your handler 
-| to consume endpoint from backend 
+| Here is where you can register your handler
+| to consume endpoint from backend
 |
 */
-Route::post('/register', [HandlerRegister::class, 'store']);
+Route::get('/', [HandlerHome::class, 'index']);
+Route::get('/signin', [HandlerAuthentication::class, 'signIn']);
+Route::post('/login', [HandlerAuthentication::class, 'login']);
+Route::get('/signup', [HandlerAuthentication::class, 'signUp']);
+Route::post('/register', [HandlerAuthentication::class, 'register']);
 Route::get('/catalog', [HandlerCatalog::class, 'index']);
 
 
@@ -42,10 +47,10 @@ Route::get('/catalog', [HandlerCatalog::class, 'index']);
 | Web API
 |--------------------------------------------------------------------------
 |
-| Here is where you can register your endpoint 
+| Here is where you can register your endpoint
 |
 */
-Route::group(['prefix' => 'api'], function() 
+Route::group(['prefix' => 'api'], function()
 // Route::group(['prefix' => 'api',  'middleware' => 'auth'], function()
 {
     Route::post('/register', [RegisterController::class, 'store']);

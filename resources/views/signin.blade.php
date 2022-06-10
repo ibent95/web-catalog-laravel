@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>CatalogApp</title>
+	<title>CatalogApp - Sign in</title>
 	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 11]>
@@ -19,25 +19,11 @@
 </head>
 
 <body>
-	<!-- [ Pre-loader ] start -->
-	@include('contents.loader-content')
-	<!-- [ Pre-loader ] End -->
 
-	<!-- [ Header ] start -->
-	@include('header')
-	<!-- [ Header ] end -->
+	<form method="POST" action="/login">
+		@csrf
 
-	<!-- [ Main Content ] start -->
-	<div id="content">
-
-		@include('content')
-
-	</div>
-	<!-- [ Main Content ] end -->
-
-	<!-- [ Footer ] start -->
-	@include('footer')
-	<!-- [ Footer ] end -->
+	</form>
 
 	<!-- Javascript -->
 	<script src="{{ mix('assets/js/manifest.js') }}"></script>
