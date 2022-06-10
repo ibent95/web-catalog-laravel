@@ -1,5 +1,4 @@
-<!-- Carousel -->
-Carousel
+<!-- Start carousel -->
 <div class="carousel-wrapper">
 	<div class="carousel w-full">
 		<div class="carousel-inner w-full">
@@ -37,3 +36,4 @@ Carousel
 		</div>
 	</div>
 </div>
+<!-- End carousel -->

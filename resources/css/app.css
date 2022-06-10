@@ -1,4 +1,12 @@
+/* Bootstrap */
+/*@import 'bootstrap/dist/css/bootstrap.min.css';*/
+
+/* Font awesome */
+/*@import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+@import '@fortawesome/fontawesome-free/css/brands.min.css';
+@import '@fortawesome/fontawesome-free/css/solid.min.css';*/
+
 /* Tailwindcss */
-@tailwind base;
+/*@tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities;*/

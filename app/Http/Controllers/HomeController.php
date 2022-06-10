@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $result = null;
+        $result = DB::table('categories')->limit(10)->get();
 
         $response = [
             'content' => 'home',

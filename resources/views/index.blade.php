@@ -18,26 +18,15 @@
 
 </head>
 
-<body>
-	<!-- [ Pre-loader ] start -->
+<body class="flex flex-col h-screen">
+
 	@include('contents.loader-content')
-	<!-- [ Pre-loader ] End -->
 
-	<!-- [ Header ] start -->
 	@include('header')
-	<!-- [ Header ] end -->
 
-	<!-- [ Main Content ] start -->
-	<div id="content">
+	@include('content')
 
-		@include('content')
-
-	</div>
-	<!-- [ Main Content ] end -->
-
-	<!-- [ Footer ] start -->
 	@include('footer')
-	<!-- [ Footer ] end -->
 
 	<!-- Javascript -->
 	<script src="{{ mix('assets/js/manifest.js') }}"></script>

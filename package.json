@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.1.1",
         "@vue/compat": "^3.1.0",
         "ansi-regex": "^6.0.1",
         "async": "^3.2.3",
@@ -22,7 +23,9 @@
         "vue-router": "^4.0.12"
     },
     "devDependencies": {
+        "@chiiya/laravel-mix-image-minimizer": "^0.3.0",
         "@popperjs/core": "^2.10.2",
+        "@squoosh/lib": "^0.4.0",
         "@vue/cli-plugin-typescript": "^5.0.4",
         "@vue/compiler-sfc": "^3.2.31",
         "autoprefixer": "^10.4.2",

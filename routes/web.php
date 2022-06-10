@@ -19,4 +19,3 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/user/profile', [UserController::class, 'index'])->name('user_profile');
-Route::get('/user/edit', [UserController::class, 'index'])->name('user_profile');
