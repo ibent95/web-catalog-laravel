@@ -18,18 +18,39 @@ class HandlerAuthentication extends Controller
             'data' => $result,
         ];
 
-        return view('signup', $response);
+        return view('sign-up', $response);
     }
 
-    public function register()
+    public function register(Request $request)
     {
+        $statusCode = 400;
+        $response = [
+            'content' => 'home',
+            'messages' => [],
+            'data' => [],
+        ];
+        $redirectUrl = route('view.home');
+
         $token = csrf_token();
-        $request = Request::create('/api/register', 'POST', ['_token' => $token]);
+        $registerHttpClient = Request::create('/api/register', 'POST', $request->all());
+        $registerApiResponse = Route::dispatch($registerHttpClient);
 
-        $response = Route::dispatch($request);
-        $response['content'] = 'home';
+        $statusCode = $registerApiResponse->getStatusCode();
 
-        return view('index', $response);;
+        $response['messages'] = collect($registerApiResponse->getData()->message)->map(function ($message) use ($statusCode) {
+            return [
+                'type' => ($statusCode == 200) ? 'success' : 'danger',
+                'message' => $message,
+            ];
+        });
+
+        //$response['messages'] = $registerApiResponse->getData()->message;
+
+        if ($statusCode != 200) {
+            $redirectUrl = route('view.sign-up');
+        }
+
+        return redirect($redirectUrl)->with($response);
     }
 
     public function signIn()
@@ -41,7 +62,7 @@ class HandlerAuthentication extends Controller
             'data' => $result,
         ];
 
-        return view('signin', $response);
+        return view('sign-in', $response);
     }
 
     public function login()

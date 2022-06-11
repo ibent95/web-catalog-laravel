@@ -7,6 +7,16 @@
 	<p class="text-2xl font-bold text-gray-700 tracking-wide">
 		Cari menu <br> favorit anda..!
 	</p>
+
+
+	@if ($messages = Session::get('messages'))
+		@foreach ($messages as $message)
+			<div class="alert alert-{{ $message['type'] }}" role="alert">
+				{{ $message['message'] }}
+			</div>
+		@endforeach
+	@endif
+
 </div>
 <!-- End main banner -->
 

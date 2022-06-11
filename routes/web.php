@@ -33,13 +33,13 @@ Route::get('/token', function () {
 | to consume endpoint from backend
 |
 */
-Route::get('/', [HandlerHome::class, 'index']);
-Route::get('/signin', [HandlerAuthentication::class, 'signIn']);
-Route::post('/login', [HandlerAuthentication::class, 'login']);
-Route::get('/signup', [HandlerAuthentication::class, 'signUp']);
-Route::post('/register', [HandlerAuthentication::class, 'register']);
-Route::get('/catalog', [HandlerCatalog::class, 'index']);
 
+Route::get('/', [HandlerHome::class, 'index'])->name('view.home');
+Route::get('/sign-in', [HandlerAuthentication::class, 'signIn'])->name('view.sign-in');
+Route::post('/login', [HandlerAuthentication::class, 'login']);
+Route::get('/sign-up', [HandlerAuthentication::class, 'signUp'])->name('view.sign-up');
+Route::post('/register', [HandlerAuthentication::class, 'register']);
+Route::get('/catalog', [HandlerCatalog::class, 'index'])->name('view.catalog');
 
 
 /*
