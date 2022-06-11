@@ -17,8 +17,6 @@ use App\Http\Controllers\Handler\HandlerHome;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Route::get('/token', function () {
     return csrf_token();
 });
@@ -33,7 +31,6 @@ Route::get('/token', function () {
 | to consume endpoint from backend
 |
 */
-
 Route::get('/', [HandlerHome::class, 'index'])->name('view.home');
 Route::get('/sign-in', [HandlerAuthentication::class, 'signIn'])->name('view.sign-in');
 Route::post('/login', [HandlerAuthentication::class, 'login']);
