@@ -32,7 +32,7 @@
 
 			<div class="card w-96">
 
-				<p class="card-title text-center m-0 py-3">Register</p>
+				<p class="card-title text-center m-0 py-3">Masuk</p>
 
 				<hr class="m-0">
 
