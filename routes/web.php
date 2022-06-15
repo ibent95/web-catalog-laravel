@@ -36,6 +36,7 @@ Route::get('/sign-in', [HandlerAuthentication::class, 'signIn'])->name('view.sig
 Route::post('/login', [HandlerAuthentication::class, 'login']);
 Route::get('/sign-up', [HandlerAuthentication::class, 'signUp'])->name('view.sign-up');
 Route::post('/register', [HandlerAuthentication::class, 'register']);
+Route::get('/forgot-password', [HandlerAuthentication::class, 'forgotPassword']);
 Route::get('/catalog', [HandlerCatalog::class, 'index'])->name('view.catalog');
 
 
