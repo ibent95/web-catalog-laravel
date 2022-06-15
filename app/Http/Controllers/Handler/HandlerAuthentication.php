@@ -14,22 +14,22 @@ class HandlerAuthentication extends Controller
         $result = [];
 
         $response = [
-            'content' => 'home',
+            'content' => 'authentication/sign-up',
             'data' => $result,
         ];
 
-        return view('sign-up', $response);
+        return view('authentication-index', $response);
     }
 
     public function register(Request $request)
     {
         $statusCode = 400;
         $response = [
-            'content' => 'home',
+            'content' => 'authentication/sign-up',
             'messages' => [],
             'data' => [],
         ];
-        $redirectUrl = route('view.home');
+        $indexContainer = 'index';
 
         $token = csrf_token();
         $registerHttpClient = Request::create('/api/register', 'POST', $request->all());
@@ -47,10 +47,11 @@ class HandlerAuthentication extends Controller
         //$response['messages'] = $registerApiResponse->getData()->message;
 
         if ($statusCode != 200) {
-            $redirectUrl = route('view.sign-up');
+            $indexContainer = 'authentication-index';
         }
 
-        return redirect($redirectUrl)->with($response);
+        // redirect($redirectUrl)->with($response);
+        return view($indexContainer, $response);
     }
 
     public function signIn()
@@ -58,22 +59,76 @@ class HandlerAuthentication extends Controller
         $result = [];
 
         $response = [
-            'content' => 'home',
+            'content' => 'authentication/sign-in',
             'data' => $result,
         ];
 
-        return view('sign-in', $response);
+        return view('authentication-index', $response);
     }
 
-    public function login()
+    public function login(Request $request)
     {
+        $statusCode = 400;
+        $response = [
+            'content' => 'authentication/sign-up',
+            'messages' => [],
+            'data' => [],
+        ];
+        $indexContainer = 'index';
+
         $token = csrf_token();
-        $request = Request::create('/api/login', 'POST', ['_token' => $token]);
+        $loginHttpClient = Request::create('/api/login', 'POST', $request->all());
+        $loginApiResponse = Route::dispatch($loginHttpClient);
 
-        $response = Route::dispatch($request);
-        $response['content'] = 'home';
+        $statusCode = $loginApiResponse->getStatusCode();
 
-        return view('index', $response);;
+        $response['messages'] = collect($loginApiResponse->getData()->message)->map(function ($message) use ($statusCode) {
+            return [
+                'type' => ($statusCode == 200) ? 'success' : 'danger',
+                'message' => $message,
+            ];
+        });
+
+        if ($statusCode != 200) {
+            $indexContainer = 'authentication-index';
+        }
+
+        return view($indexContainer, $response);
+    }
+
+    public function forgotPassword()
+    {
+        $response['content'] = 'authentication/forgot-password';
+
+        return view('authentication-index', $response);
+    }
+
+    public function requestResetPassword(Request $request)
+    {
+        $statusCode = 400;
+        $response = [
+            'content' => 'home',
+            'messages' => [],
+        ];
+        $indexContainer = 'index';
+
+        $registerHttpClient = Request::create('/api/register', 'POST', $request->all());
+        $registerApiResponse = Route::dispatch($registerHttpClient);
+
+        $statusCode = $registerApiResponse->getStatusCode();
+
+        $response['messages'] = collect($registerApiResponse->getData()->message)->map(function ($message) use ($statusCode) {
+            return [
+                'type' => ($statusCode == 200) ? 'success' : 'danger',
+                'message' => $message,
+            ];
+        });
+
+        if ($statusCode != 200) {
+            $indexContainer = 'authentication-index';
+        }
+
+        return view($indexContainer, $response);
     }
 
 }
