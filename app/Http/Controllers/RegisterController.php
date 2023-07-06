@@ -50,7 +50,6 @@ class RegisterController extends Controller
     {
         $err = Register::validate($request);
         if($err) return $this->badRequest($err);
-        
         DB::beginTransaction();
             try {
                 $userID = Users::store($request);
@@ -61,7 +60,6 @@ class RegisterController extends Controller
                 return $this->internalServerError();
             }
         DB::commit();
-        
         return response()->json(['message' => 'sukses'], 200);
     }
 
